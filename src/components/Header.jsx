@@ -4,7 +4,7 @@ import telefono from '../assets/header/telefono.png';
 
 export default function Header() {
   return (
-    <div className="flex items-center justify-between p-4 bg-white">
+    <div className="flex items-center justify-between p-4">
       {/* Logo a la izquierda */}
       <img src={logo} alt="Logo principal" className="h-12" />
       
