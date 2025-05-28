@@ -21,14 +21,14 @@ export default function Formulario() {
   };
 
   return (
-    <div className="flex  max-w-6xl mx-auto mt-6  ">
+    <div className="flex  max-w-6xl mx-auto mt-4  ">
       {/* Imagen a la izquierda */}
       <div className="w-1/2 pr-4">
-         <img src={imgPrincipal} alt="Imagen principal"  />
+         <img src={imgPrincipal} alt="Imagen principal"  className="w-full max-w-[450px] h-auto object-contain" />
       </div>
 
       {/* Formulario a la derecha */}
-  <form className="w-[351px] h-[128px]">
+    <form className="w-[351px] h-[128px]">
       <div className="w-fit px-4 py-1 rounded-xl font-bold text-sm text-black" style={{ background: "linear-gradient(to right, #00F4E2 , #00FF7F )" }}>Seguro Salud Flexible</div>
       <div className="text-[32px] font-bold leading-tight">Creado para ti y tu<br/>familia</div>
       <div className="text-[14px] ">Tú eliges cuánto pagar. Ingresa tus datos, cotiza y<br/> recibe nuestra asesoría. 100% online.</div>
