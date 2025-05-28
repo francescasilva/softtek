@@ -1,4 +1,5 @@
 import  { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import imgPrincipal from '../assets/formulario/imgprincipal.png';
 
 export default function Formulario() {
@@ -7,18 +8,40 @@ export default function Formulario() {
   const [celular, setCelular] = useState("");
   const [aceptaPrivacidad, setAceptaPrivacidad] = useState(false);
   const [aceptaComercial, setAceptaComercial] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí puedes agregar validaciones o enviar datos
-    console.log({
-      tipoDocumento,
-      numeroDocumento,
-      celular,
-      aceptaPrivacidad,
-      aceptaComercial,
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!numeroDocumento || !celular || !aceptaPrivacidad) {
+    alert("Por favor completa todos los campos obligatorios.");
+    return;
+  }
+
+  if (numeroDocumento !== '12345678') {
+    alert("DNI no encontrado");
+    return;
+  }
+
+  try {
+    const response = await fetch( `https://rimac-front-end-challenge.netlify.app/api/user.json`);
+
+    if (!response.ok) throw new Error('Usuario no encontrado');
+
+    const userData = await response.json();
+    console.log("Datos del usuario:", userData); 
+
+    // Redirige a la ruta /planes con los datos
+    navigate('/planes', {
+      state: {
+        user: userData,
+        celular,
+      },
     });
-  };
+  } catch (error) {
+    alert("Error al obtener los datos del usuario: " + error.message);
+  }
+};
 
   return (
     <div className="flex  max-w-6xl mx-auto mt-4  ">
@@ -28,7 +51,7 @@ export default function Formulario() {
       </div>
 
       {/* Formulario a la derecha */}
-    <form className="w-[351px] h-[128px]">
+    <form className="w-[351px] h-[128px]" onSubmit={handleSubmit}>
       <div className="w-fit px-4 py-1 rounded-xl font-bold text-sm text-black" style={{ background: "linear-gradient(to right, #00F4E2 , #00FF7F )" }}>Seguro Salud Flexible</div>
       <div className="text-[32px] font-bold leading-tight">Creado para ti y tu<br/>familia</div>
       <div className="text-[14px] ">Tú eliges cuánto pagar. Ingresa tus datos, cotiza y<br/> recibe nuestra asesoría. 100% online.</div>
@@ -47,6 +70,8 @@ export default function Formulario() {
           <select
             id="tipoDocumento"
             name="tipoDocumento"
+             value={tipoDocumento}
+             onChange={(e) => setTipoDocumento(e.target.value)}
             className="w-36 border border-gray-300 rounded-l-md px-1 py-2 focus:outline-none focus:ring focus:ring-blue-300"
           >
             <option value="dni">DNI</option>
