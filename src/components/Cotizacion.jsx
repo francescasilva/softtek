@@ -102,10 +102,10 @@ console.log('Planes mostrados:', planesFiltrados);
           {/* Opción 1: Para mí */}
           
          <label
-          className={`group relative rounded-xl p-6 bg-white shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer border ${
+          className={`group relative rounded-xl p-6 bg-white shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer border-0 ${
            opcionSeleccionada === 'para-mi' ? 'border-blue-500 ring-2 ring-blue-200' : ''
             }`}
-            onClick={() => setOpcionSeleccionada('para-mi')} // ✅ aquí va 'para-mi'
+            onClick={() => setOpcionSeleccionada('para-mi')} //  aquí va 'para-mi'
             >
         <input
            type="radio"
@@ -128,7 +128,7 @@ console.log('Planes mostrados:', planesFiltrados);
 
 {/* Opción 2: Para alguien más */}
       <label
-       className={`group relative rounded-xl p-6 bg-white shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer border ${
+       className={`group relative rounded-xl p-6 bg-white shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer border-0 ${
        opcionSeleccionada === 'para-otro' ? 'border-blue-500 ring-2 ring-blue-200' : ''
      }`}
       onClick={() => setOpcionSeleccionada('para-otro')}
@@ -156,13 +156,16 @@ console.log('Planes mostrados:', planesFiltrados);
     </div>
         {/* Planes filtrados */}
         {opcionSeleccionada && (
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2"> 
         {planesFiltrados.length > 0 ? (
           planesFiltrados.map((plan, index) => (
             <div
               key={index}
-              className="border rounded-xl shadow-xl p-6 bg-white hover:-translate-y-1 transition-transform"
-            >
+              className="border rounded-xl shadow-xl p-6 bg-white hover:-translate-y-1 transition-transform cursor-pointer"
+              onClick={() => {
+                    navigate('/resumen', { state: { user, plan } });
+                    }}
+              >
               <h3 className="text-xl font-bold text-indigo-700">{plan.name}</h3>
               <p className="text-lg font-semibold text-gray-700 mb-2">
                 S/ {plan.price}
