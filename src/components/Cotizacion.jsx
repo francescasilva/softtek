@@ -66,9 +66,12 @@ const handleSeleccionParaOtro = () => {
     setPlanesFiltrados(filtrados);
   }
 
-  if (opcionSeleccionada === 'para-otro') {
-    // Todos los planes
-    setPlanesFiltrados(planes);
+   if (opcionSeleccionada === 'para-otro') {
+    const filtrados = planes.map((plan) => ({
+      ...plan,
+      price: (plan.price * 0.95).toFixed(2), // 5% de descuento
+    }));
+    setPlanesFiltrados(filtrados);
   }
 }, [opcionSeleccionada, planes, edadUsuario]);
 
@@ -152,6 +155,7 @@ console.log('Planes mostrados:', planesFiltrados);
       </div>
     </div>
         {/* Planes filtrados */}
+        {opcionSeleccionada && (
       <div className="grid gap-6 md:grid-cols-2">
         {planesFiltrados.length > 0 ? (
           planesFiltrados.map((plan, index) => (
@@ -176,6 +180,7 @@ console.log('Planes mostrados:', planesFiltrados);
           </p>
         )}
       </div>
+       )}
     </div>
   );
 }
