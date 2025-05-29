@@ -9,7 +9,11 @@ export default function Formulario() {
   const [aceptaPrivacidad, setAceptaPrivacidad] = useState(false);
   const [aceptaComercial, setAceptaComercial] = useState(false);
   const navigate = useNavigate();
-
+  
+     const USUARIO_VALIDO = {
+     dni: '12345678',
+     celular: '983538958'
+     };
   const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -18,10 +22,14 @@ export default function Formulario() {
     return;
   }
 
-  if (numeroDocumento !== '12345678') {
-    alert("DNI no encontrado");
-    return;
-  }
+  if (
+  numeroDocumento !== USUARIO_VALIDO.dni ||
+  celular !== USUARIO_VALIDO.celular
+) {
+  alert("DNI o celular incorrecto.");
+  return;
+}
+
 
   try {
     const response = await fetch( `https://rimac-front-end-challenge.netlify.app/api/user.json`);
@@ -47,21 +55,21 @@ export default function Formulario() {
 };
 
   return (
-    <div className="flex  max-w-6xl mx-auto mt-4  ">
+    <div className="flex  max-w-6xl mx-auto mt-4 gap-10  ">
       {/* Imagen a la izquierda */}
-      <div className="w-1/2 pr-4">
-         <img src={imgPrincipal} alt="Imagen principal"  className="w-full max-w-[450px] h-auto object-contain" />
+      <div className="w-1/2  ">
+         <img src={imgPrincipal} alt="Imagen principal"  className="w-[600px] h-[500px] object-contain" />
       </div>
 
       {/* Formulario a la derecha */}
-    <form className="w-[351px] h-[128px]" onSubmit={handleSubmit}>
+    <form className="w-[350px] h-[120px]" onSubmit={handleSubmit}>
       <div className="w-fit px-4 py-1 rounded-xl font-bold text-sm text-black" style={{ background: "linear-gradient(to right, #00F4E2 , #00FF7F )" }}>Seguro Salud Flexible</div>
-      <div className="text-[32px] font-bold leading-tight">Creado para ti y tu<br/>familia</div>
-      <div className="text-[14px] ">Tú eliges cuánto pagar. Ingresa tus datos, cotiza y<br/> recibe nuestra asesoría. 100% online.</div>
+      <div className="text-[35px] font-bold leading-tight mb-4">Creado para ti y tu<br/>familia</div>
+      <div className="text-[16px] ">Tú eliges cuánto pagar. Ingresa tus datos, cotiza y<br/> recibe nuestra asesoría. 100% online.</div>
 
         {/* Aquí van tus campos del formulario */}
          {/* Tipo de documento */}
-    <div className="flex mb-4">
+    <div className="flex mb-2">
     
         <div className="mb-4 ">
           <label
@@ -75,7 +83,7 @@ export default function Formulario() {
             name="tipoDocumento"
              value={tipoDocumento}
              onChange={(e) => setTipoDocumento(e.target.value)}
-            className="w-36 border border-gray-300 rounded-l-md px-1 py-2 focus:outline-none focus:ring focus:ring-blue-300"
+            className="w-36 border border-gray-300 rounded-l-md px-1 py-3 focus:outline-none focus:ring focus:ring-blue-300"
           >
             <option value="dni">DNI</option>
             <option value="pasaporte">Pasaporte</option>
@@ -97,7 +105,7 @@ export default function Formulario() {
           placeholder="Nro. de Documento"
           value={numeroDocumento}
           onChange={(e) => setNumeroDocumento(e.target.value)}
-          className="w-full px-6 py-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring focus:ring-blue-300"
+          className="w-full px-6 py-3 border border-gray-300 rounded-r-md focus:outline-none focus:ring focus:ring-blue-300"
         />
       </div>
     </div>
@@ -109,7 +117,7 @@ export default function Formulario() {
           placeholder="Celular"
           value={celular}
           onChange={(e) => setCelular(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
         />
       </div>
 
@@ -158,7 +166,7 @@ export default function Formulario() {
       {/* Botón */}
       <button
         type="submit"
-        className=" bg-black text-white text-lg font-bold py-3 px-10 rounded-full hover:bg-blue-700 transition duration-200"
+        className=" bg-black text-white text-lg font-bold py-3 px-10 rounded-full hover:bg-gray-900 transition duration-200"
       >
         Cotiza Aquí
       </button>

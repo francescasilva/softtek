@@ -67,7 +67,7 @@ export default function Planes() {
       console.log('Planes mostrados:', planesFiltrados);
 
     return (
-    <div className="min-h-screen bg-gray-50 px-4 py-8">
+    <div className="min-h-screen  px-4 ">
       <div className="max-w-3xl mx-auto">
         {/* Encabezado de navegación */}
         <div className="flex items-center space-x-2 text-blue-600 cursor-pointer mb-6" onClick={() => navigate(-1)}>

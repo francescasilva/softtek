@@ -6,10 +6,10 @@ export default function Header() {
   return (
     <div className="flex items-center justify-between p-4">
       {/* Logo a la izquierda */}
-      <img src={logo} alt="Logo principal" className="h-12" />
+      <img src={logo} alt="Logo principal" className="h-12 ml-20" />
       
       {/* Contenido a la derecha */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 pr-20">
         <div>
           <h1 className="font-bold text-sm">¡Compra por este medio!</h1>
         </div>
