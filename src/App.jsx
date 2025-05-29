@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import  Home  from './pages/Home'
 import  Planes  from './pages/Planes'
 import Resumen from './pages/Resumen';
-import Layout from './layouts/layout';
+import Layout from './layouts/Layout';
 
 
 function App() {
