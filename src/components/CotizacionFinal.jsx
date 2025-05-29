@@ -17,39 +17,40 @@ export default function CotizacionFinal() {
   }
 
   return (
-                 <div className="p-6 max-w-4xl mx-auto">
-  <div
-    className="flex items-center space-x-2 text-blue-600 cursor-pointer mb-4"
-    onClick={() => navigate(-1)}
-  >
-    <ArrowLeft size={20} />
-    <span className="font-medium">Volver</span>
-  </div>
+      <div   className="p-6 max-w-4xl mx-auto">
+    <span
+     onClick={() => navigate(-1)}
+      className="inline-flex items-center space-x-2 text-blue-600 cursor-pointer mb-6"
+    >
+  <ArrowLeft size={20} />
+  <span className="font-medium">Volver</span>
+</span>
 
-  <h1 className="text-2xl font-bold mb-6">Resumen del seguro</h1>
 
-  <div className="rounded-2xl border border-gray-200 shadow-md px-8 py-4 bg-white w-full max-w-4xl mx-auto mb-8">
+  <h1 className="text-2xl font-bold text-[#141938] mb-6">Resumen del seguro</h1>
+
+  <div className="rounded-2xl border text-[#141938] border-gray-200 shadow-md px-8 py-4 bg-white w-full max-w-4xl mx-auto mb-8">
     <section className="mb-4">
-      <h2 className="text-xs font-semibold">PRECIOS CALCULADOS PARA:</h2>
+      <h2 className="text-xs font-bold ">PRECIOS CALCULADOS PARA:</h2>
 
       <div className="flex items-center gap-3 my-2">
         <img src={icono} alt="icono" className="h-10" />
-        <p className="text-xl font-semibold">{user.name} {user.lastName}</p>
+        <p className="font-lato text-xl  font-extrabold">{user.name} {user.lastName}</p>
       </div>
 
       <hr className="my-2 border-gray-200 mb-4" />
 
       <div className="space-y-1 text-sm">
         <h2 className="text-lg font-bold">Responsable del pago:</h2>
-        <p>DNI: {user.dni}</p>
-        <p>Celular: {user.celular}</p>
+        <p className='font-semibold'>DNI: {user.dni}</p>
+        <p className='font-semibold'>Celular: {user.celular}</p>
       </div>
     </section>
 
     <section className="space-y-1 text-sm">
       <h2 className="text-lg font-bold">Plan elegido:</h2>
-      <p>{plan.name}</p>
-      <p>Costo del plan: S/ {plan.price} al mes</p>
+      <p className='font-semibold'>{plan.name}</p>
+      <p className='font-semibold'>Costo del plan: S/ {plan.price} al mes</p>
     </section>
   </div>
 </div>

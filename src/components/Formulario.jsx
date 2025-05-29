@@ -68,7 +68,7 @@ export default function Formulario() {
           Seguro Salud Flexible
         </div>
 
-        <h1 className="text-[28px] sm:text-[35px] font-bold leading-tight mb-3">
+        <h1 className=" text-[28px] sm:text-[35px] font-bold leading-tight mb-3">
           Creado para ti y tu<br />familia
         </h1>
 
@@ -82,7 +82,7 @@ export default function Formulario() {
     name="tipoDocumento"
     value={tipoDocumento}
     onChange={(e) => setTipoDocumento(e.target.value)}
-    className="w-1/3 border border-gray-300 rounded-l-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm"
+    className="w-1/3 border border-black rounded-l-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm"
   >
     <option value="dni">DNI</option>
     <option value="pasaporte">Pasaporte</option>
@@ -98,7 +98,7 @@ export default function Formulario() {
     onChange={(e) => setNumeroDocumento(e.target.value)}
     minLength={8}
     maxLength={8}
-    className="flex-1 border-t border-r border-b border-gray-300 border-l-0 rounded-r-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm"
+    className="flex-1 border-t border-r border-b  border-black border-l-0 rounded-r-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm"
   />
 </div>
 
@@ -112,7 +112,7 @@ export default function Formulario() {
     onChange={(e) => setCelular(e.target.value)}
     minLength={9}
     maxLength={9}
-    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm"
+    className="w-full px-4 py-3 border  border-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm"
   />
 </div>
 
@@ -129,7 +129,7 @@ export default function Formulario() {
             className="mt-1 mr-2"
           />
           <label htmlFor="politicaPrivacidad" className="text-sm text-black">
-            Acepto la <a href="#" className="underline">Política de Privacidad</a>
+            Acepto la <a href="#" >Política de Privacidad</a>
           </label>
         </div>
 
@@ -142,12 +142,12 @@ export default function Formulario() {
             className="mt-1 mr-2"
           />
           <label htmlFor="politicaComercial" className="text-sm text-black">
-            Acepto la <a href="#" className="underline">Política de Comunicaciones Comerciales</a>
+            Acepto la <a href="#" >Política de Comunicaciones Comerciales</a>
           </label>
         </div>
 
         <div className="mb-4">
-          <h6 className="underline text-sm">Aplican Términos y Condiciones.</h6>
+          <h6 className="underline font-bold text-sm">Aplican Términos y Condiciones.</h6>
         </div>
 
         <button

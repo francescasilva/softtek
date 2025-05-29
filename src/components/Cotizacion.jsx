@@ -58,10 +58,14 @@ export default function Planes() {
     <div className="min-h-screen px-4 py-8">
       <div className="max-w-6xl mx-auto">
         {/* Encabezado de navegación */}
-        <div className="flex items-center space-x-2 text-blue-600 cursor-pointer mb-6" onClick={() => navigate(-1)}>
-          <ArrowLeft size={20} />
-          <span className="font-medium">Volver</span>
-        </div>
+        <span
+            onClick={() => navigate(-1)}
+            className="inline-flex items-center space-x-2 text-blue-600 cursor-pointer mb-6"
+           >
+           <ArrowLeft size={20} />
+           <span className="font-medium">Volver</span>
+        </span>
+
         <div className="max-w-xl mx-auto text-center space-y-4">
           {/* Título y subtítulo */}
           <div className="text-center mb-10">
