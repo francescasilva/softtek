@@ -160,17 +160,15 @@ export default function Planes() {
       </div>
         {/* Planes filtrados */}
         {opcionSeleccionada && (
-      <div className="flex justify-center mt-10">
-      <div className="grid gap-8 md:grid-cols-3 mt-10"> 
+      <div className=" flex justify-center mt-10">
+      <div className=" grid gap-8 md:grid-cols-3 mt-10"> 
          
         {planesFiltrados.length > 0 ? (
           planesFiltrados.map((plan, index) => (
             <div
               key={index}
-              className="rounded-2xl border border-gray-200 shadow-md p-10 bg-white h-[687px] w-[288px] max-w-sm"
-              onClick={() => {
-                    navigate('/resumen', { state: { user, plan } });
-                    }}
+              className="flex flex-col justify-between rounded-2xl border border-gray-200 shadow-md p-10 bg-white h-[687px] w-[288px] max-w-sm"
+             
               >
                 <div className="flex items-center gap-x-2 mb-3">
                 <h3 className="text-xl font-bold  text-gray-800 mb-5">{plan.name}</h3>
@@ -189,11 +187,24 @@ export default function Planes() {
                 S/ {plan.price} al mes
               </p>
               <hr className="my-4 border-gray-200 mb-9" />
-              <ul className="list-disc list-inside text-gray-600 space-y-6 text-sm ">
+              <ul className="list-disc list-outside pl-5 text-gray-600 space-y-10 text-sm font-semibold leading-relaxed ">
                 {plan.description.map((item, i) => (
-                  <li key={i}>{item}</li>
+                  <li key={i} >{item}</li>
                 ))}
               </ul>
+             
+                  <button
+                   type="submit"
+                    onClick={() => {
+                    navigate('/resumen', { state: { user, plan } });
+                    }}
+                 className=" mt-auto  bg-red-500 text-white text-lg font-semibold py-1 px-7 rounded-4xl hover:bg-red-600 transition duration-200"
+                >
+                Seleccionar Plan
+               </button>
+
+              
+              
             </div>
           )) 
         ) : (
