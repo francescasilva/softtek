@@ -33,10 +33,13 @@ export default function Formulario() {
 
     // Redirige a la ruta /planes con los datos
     navigate('/planes', {
-      state: {
-        user: userData,
-        celular,
-      },
+     state: {
+      user: {
+      ...userData,
+      dni: numeroDocumento,
+      celular: celular
+    }
+  }
     });
   } catch (error) {
     alert("Error al obtener los datos del usuario: " + error.message);

@@ -6,6 +6,7 @@ import iconoPlanes from '../assets/cotizacion/iconoPlan2.png';
 import { useEffect, useState } from "react";
 import home from '../assets/planes/home.png';
 import clinica from '../assets/planes/clinica.png';
+import { calcularEdad } from '../utils/fecha'; 
 
 
 export default function Planes() {
@@ -18,23 +19,6 @@ export default function Planes() {
 
 
   // Función para calcular edad a partir de fecha de nacimiento
- const calcularEdad = (fechaNacimiento) => {
-  // Convertir de "DD-MM-YYYY" a "YYYY-MM-DD"
-  const [dia, mes, anio] = fechaNacimiento.split("-");
-  const fechaISO = `${anio}-${mes}-${dia}`; // formato ISO válido
-
-  const nacimiento = new Date(fechaISO);
-  if (isNaN(nacimiento)) return null;
-
-  const hoy = new Date();
-  let edad = hoy.getFullYear() - nacimiento.getFullYear();
-  const m = hoy.getMonth() - nacimiento.getMonth();
-  if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
-    edad--;
-  }
-  return edad;
-};
-
   const edadUsuario = user?.birthDay ? calcularEdad(user.birthDay) : null;
 
   console.log("Edad usuario:", edadUsuario);
@@ -202,9 +186,6 @@ export default function Planes() {
                 >
                 Seleccionar Plan
                </button>
-
-              
-              
             </div>
           )) 
         ) : (
